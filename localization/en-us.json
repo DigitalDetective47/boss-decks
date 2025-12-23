@@ -1,0 +1,19 @@
+{
+    "descriptions": {
+        "Mod": {
+            "BossDecks": {
+                "name": "Boss Decks",
+                "text": [
+                    "Turns every boss blind into a deck.",
+                    " ",
+                    "Each deck applies the boss's effect",
+                    "throughout the entirety of your run,",
+                    "alongside a positive effect that works around",
+                    "(or sometimes with) the boss's effect.",
+                    " ",
+                    "Upscaled blind symbols {C:blue}by AstraLuna{}"
+                ]
+            }
+        }
+    }
+}

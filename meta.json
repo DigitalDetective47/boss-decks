@@ -1,0 +1,17 @@
+{
+    "id": "BossDecks",
+    "name": "Boss Decks",
+    "author": [
+        "DigitalDetective47"
+    ],
+    "description": "Turns every boss blind into a deck.",
+    "prefix": "bdeck",
+    "main_file": "main.lua",
+    "badge_colour": "A84024",
+    "badge_text_colour": "5D2414",
+    "version": "1.0.0~0l21a",
+    "dependencies": [
+        "Steamodded (>=1.0.0~BETA-0814a)",
+        "StrangeLib (>=4.0)"
+    ]
+}
