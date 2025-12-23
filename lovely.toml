@@ -1,0 +1,13 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+# Deck of The Serpent
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "if G.GAME.blind.name == 'The Serpent' and"
+position = "at"
+payload = "if (G.GAME.blind.name == 'The Serpent' or G.GAME.selected_back.name == 'b_bdeck_serpent') and"
+match_indent = true

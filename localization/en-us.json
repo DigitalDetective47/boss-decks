@@ -1,5 +1,18 @@
 {
     "descriptions": {
+        "Back": {
+            "b_bdeck_serpent": {
+                "name": "Deck of The Serpent",
+                "text": [
+                    "After Play or Discard,",
+                    "always draw 3 cards"
+                ],
+                "unlock": [
+                    "Defeat {C:attention}#1#",
+                    "on Ante {C:attention}#2#{} or higher"
+                ]
+            }
+        },
         "Mod": {
             "BossDecks": {
                 "name": "Boss Decks",
