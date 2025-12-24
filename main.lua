@@ -26,9 +26,8 @@ end
 ---template implementation of `locked_loc_vars`
 ---@param self SMODS.Back
 ---@param info_queue table[]
----@param card Card
 ---@return { vars: [string, integer] }
-local function locked_loc_vars(self, info_queue, card)
+local function locked_loc_vars(self, info_queue)
     return { vars = { localize { type = "name_text", set = "Blind", key = get_blind_key(self) }, 7 } }
 end
 ---template implementation of `check_for_unlock`
@@ -37,7 +36,7 @@ end
 ---@return boolean
 local function check_for_unlock(self, args)
     return args.type == "round_win" and G.GAME.round_resets.ante >= 7 and
-    G.GAME.blind.config.blind.key == get_blind_key(self)
+        G.GAME.blind.config.blind.key == get_blind_key(self)
 end
 ---template implementation of `apply` that bans the deck's corresponding blind
 ---@param self SMODS.Back
