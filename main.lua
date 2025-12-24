@@ -52,5 +52,24 @@ SMODS.Back {
     unlocked = false,
     locked_loc_vars = locked_loc_vars,
     check_for_unlock = check_for_unlock,
-    apply = apply
+    apply = apply,
+}
+
+SMODS.Back {
+    key = "needle",
+    atlas = "decks",
+    pos = { x = 0, y = 3 },
+    unlocked = false,
+    config = { ante_scaling = 0.5, extra_discard_bonus = 2 },
+    loc_vars = function(self, info_queue)
+        return { vars = { self.config.ante_scaling, self.config.extra_discard_bonus } }
+    end,
+    locked_loc_vars = locked_loc_vars,
+    check_for_unlock = check_for_unlock,
+    apply = apply,
+    calculate = function(self, back, context)
+        if context.setting_blind then
+            ease_hands_played(1 - G.GAME.current_round.hands_left)
+        end
+    end,
 }

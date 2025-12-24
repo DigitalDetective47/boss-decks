@@ -1,6 +1,19 @@
 {
     "descriptions": {
         "Back": {
+            "b_bdeck_needle": {
+                "name": "Deck of The Needle",
+                "text": [
+                    "Play only {C:blue}1{} hand",
+                    "{C:red}X#1#{} base Blind size",
+                    "At end of each Round:",
+                    "{C:money}$#2#{} per remaining {C:red}Discard"
+                ],
+                "unlock": [
+                    "Defeat {C:attention}#1#",
+                    "on Ante {C:attention}#2#{} or higher"
+                ]
+            },
             "b_bdeck_serpent": {
                 "name": "Deck of The Serpent",
                 "text": [
