@@ -1,6 +1,19 @@
 {
     "descriptions": {
         "Back": {
+            "b_bdeck_arm": {
+                "name": "Deck of The Arm",
+                "text": [
+                    "Decrease level of",
+                    "played poker hand,",
+                    "then increase level of",
+                    "most played poker hand"
+                ],
+                "unlock": [
+                    "Defeat {C:attention}#1#",
+                    "on Ante {C:attention}#2#{} or higher"
+                ]
+            },
             "b_bdeck_needle": {
                 "name": "Deck of The Needle",
                 "text": [

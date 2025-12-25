@@ -46,6 +46,32 @@ local function apply(self, deck)
 end
 
 SMODS.Back {
+    key = "arm",
+    atlas = "decks",
+    pos = { x = 3, y = 1 },
+    unlocked = false,
+    locked_loc_vars = locked_loc_vars,
+    check_for_unlock = check_for_unlock,
+    apply = apply,
+    calculate = function(self, back, context)
+        if context.debuff_hand and not context.check and G.GAME.hands[context.scoring_name].level > 1 then
+            SMODS.upgrade_poker_hands { hands = context.scoring_name, level_up = -1 }
+            ---@type PokerHands
+            local hand = G.handlist[1]
+            ---@type integer
+            local count = -1
+            for _, key in ipairs(G.handlist) do
+                if G.GAME.hands[key].played > count then
+                    hand = key
+                    count = G.GAME.hands[key].played
+                end
+            end
+            SMODS.upgrade_poker_hands { hands = hand, level_up = 1 }
+        end
+    end,
+}
+
+SMODS.Back {
     key = "serpent",
     atlas = "decks",
     pos = { x = 1, y = 2 },
