@@ -72,6 +72,27 @@ SMODS.Back {
 }
 
 SMODS.Back {
+    key = "window",
+    atlas = "decks",
+    pos = { x = 4, y = 0 },
+    unlocked = false,
+    config = { extra = 1 },
+    loc_vars = function(self, info_queue)
+        return { vars = { self.config.extra } }
+    end,
+    locked_loc_vars = locked_loc_vars,
+    check_for_unlock = check_for_unlock,
+    apply = apply,
+    calculate = function(self, back, context)
+        if context.debuff_card and context.debuff_card:is_suit("Diamonds", true) then
+            return { debuff = true }
+        elseif context.change_suit and context.old_suit == "Diamonds" and context.new_suit ~= "Diamonds" then
+            return { dollars = 1 }
+        end
+    end,
+}
+
+SMODS.Back {
     key = "serpent",
     atlas = "decks",
     pos = { x = 1, y = 2 },

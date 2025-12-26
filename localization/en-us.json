@@ -37,6 +37,20 @@
                     "Defeat {C:attention}#1#",
                     "on Ante {C:attention}#2#{} or higher"
                 ]
+            },
+            "b_bdeck_window": {
+                "name": "Deck of The Window",
+                "text": [
+                    "All {C:diamonds}Diamond{} cards",
+                    "are debuffed",
+                    "Earn {C:money}$#1#{} when a {C:diamonds}Diamond",
+                    "card is converted",
+                    "to another suit"
+                ],
+                "unlock": [
+                    "Defeat {C:attention}#1#",
+                    "on Ante {C:attention}#2#{} or higher"
+                ]
             }
         },
         "Mod": {
