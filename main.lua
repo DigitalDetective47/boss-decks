@@ -54,7 +54,7 @@ SMODS.Back {
     check_for_unlock = check_for_unlock,
     apply = apply,
     calculate = function(self, back, context)
-        if context.debuff_hand and not context.check and G.GAME.hands[context.scoring_name].level > 1 then
+        if context.before and G.GAME.hands[context.scoring_name].level > 1 then
             SMODS.upgrade_poker_hands { hands = context.scoring_name, level_up = -1 }
             ---@type PokerHands
             local hand = G.handlist[1]
