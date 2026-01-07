@@ -44,8 +44,8 @@
                     "All {C:diamonds}Diamond{} cards",
                     "are debuffed",
                     "Earn {C:money}$#1#{} when a {C:diamonds}Diamond",
-                    "card is converted",
-                    "to another suit"
+                    "card is destroyed or",
+                    "converted to another suit"
                 ],
                 "unlock": [
                     "Defeat {C:attention}#1#",

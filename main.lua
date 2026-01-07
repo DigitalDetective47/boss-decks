@@ -87,7 +87,16 @@ SMODS.Back {
         if context.debuff_card and context.debuff_card:is_suit("Diamonds", true) then
             return { debuff = true }
         elseif context.change_suit and context.old_suit == "Diamonds" and context.new_suit ~= "Diamonds" then
-            return { dollars = 1 }
+            return { dollars = self.config.extra }
+        elseif context.remove_playing_cards then
+            ---@type integer
+            local diamonds = 0
+            for _, other in ipairs(context.removed) do
+                if other.base.suit == "Diamonds" then
+                    diamonds = diamonds + 1
+                end
+            end
+            return { dollars = diamonds * self.config.extra }
         end
     end,
 }
