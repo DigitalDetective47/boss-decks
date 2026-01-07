@@ -122,10 +122,30 @@ SMODS.Back {
     end,
     locked_loc_vars = locked_loc_vars,
     check_for_unlock = check_for_unlock,
-    apply = apply,
-    calculate = function(self, back, context)
-        if context.setting_blind then
-            ease_hands_played(1 - G.GAME.current_round.hands_left)
-        end
-    end,
+    apply = function(self, back)
+        apply(self, back)
+        G.E_MANAGER:add_event(Event { func = function()
+            G.GAME.round_resets.hands = 1
+            G.GAME.current_round.hands_left = 1
+            return true
+        end })
+    end
 }
+local ease_hands_ref = ease_hands_played
+function ease_hands_played(...)
+    if G.b_bdeck_needle_immune or G.GAME.selected_back.name ~= "b_bdeck_needle" then
+        return ease_hands_ref(...)
+    end
+    G.GAME.round_resets.hands = 1
+    G.GAME.current_round.hands_left = 1
+    attention_text {
+        text = localize("k_nope_ex"),
+        scale = 1,
+        hold = 0.7,
+        cover = G.HUD:get_UIE_by_ID("hand_UI_count").parent,
+        cover_colour = G.C.GREY,
+        align = "cm",
+    }
+    play_sound("timpani", 0.8)
+    play_sound("generic1")
+end

@@ -11,3 +11,15 @@ pattern = "if G.GAME.blind.name == 'The Serpent' and"
 position = "at"
 payload = "if (G.GAME.blind.name == 'The Serpent' or G.GAME.selected_back.name == 'b_bdeck_serpent') and"
 match_indent = true
+
+# playing a hand needs an override switch for Deck of The Needle's 1 hand rule
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "ease_hands_played(-1)"
+position = "at"
+payload = """G.b_bdeck_needle_immune = true
+ease_hands_played(-1)
+G.b_bdeck_needle_immune = nil
+"""
+match_indent = true
