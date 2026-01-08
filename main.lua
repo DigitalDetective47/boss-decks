@@ -149,3 +149,36 @@ function ease_hands_played(...)
     play_sound("timpani", 0.8)
     play_sound("generic1")
 end
+
+SMODS.Back {
+    key = "tooth",
+    atlas = "decks",
+    pos = { x = 2, y = 3 },
+    unlocked = false,
+    locked_loc_vars = locked_loc_vars,
+    check_for_unlock = check_for_unlock,
+    apply = apply,
+    calculate = function(self, back, context)
+        if context.press_play then
+            G.E_MANAGER:add_event(Event {
+                delay = 0.2,
+                func = function()
+                    for _, card in ipairs(G.play.cards) do
+                        G.E_MANAGER:add_event(Event { func = function()
+                            card:juice_up()
+                            return true
+                        end })
+                        ease_dollars(-1)
+                        delay(0.23)
+                    end
+                    return true
+                end
+            })
+        elseif context.end_of_round and not (context.repetition or context.individual) then
+            return {
+                dollars = -2 * (G.GAME.dollars + (G.GAME.dollar_buffer or 0)),
+                dollar_message = localize("k_negated_ex")
+            }
+        end
+    end,
+}

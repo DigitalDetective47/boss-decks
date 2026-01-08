@@ -38,6 +38,19 @@
                     "on Ante {C:attention}#2#{} or higher"
                 ]
             },
+            "b_bdeck_tooth": {
+                "name": "Deck of The Tooth",
+                "text": [
+                    "Lose {C:money}$1{} per",
+                    "card played",
+                    "Negate current {C:money}money",
+                    "at end of round"
+                ],
+                "unlock": [
+                    "Defeat {C:attention}#1#",
+                    "on Ante {C:attention}#2#{} or higher"
+                ]
+            },
             "b_bdeck_window": {
                 "name": "Deck of The Window",
                 "text": [
@@ -67,6 +80,11 @@
                     "Upscaled blind symbols {C:blue}by AstraLuna{}"
                 ]
             }
+        }
+    },
+    "misc": {
+        "dictionary": {
+            "k_negated_ex": "Negated!"
         }
     }
 }
