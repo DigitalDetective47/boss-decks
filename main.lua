@@ -177,7 +177,7 @@ SMODS.Back {
         elseif context.end_of_round and not (context.repetition or context.individual) then
             return {
                 dollars = -2 * (G.GAME.dollars + (G.GAME.dollar_buffer or 0)),
-                dollar_message = localize("k_negated_ex")
+                dollar_message = { message = localize("k_negated_ex"), colour = G.C.MONEY }
             }
         end
     end,
