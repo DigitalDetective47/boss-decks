@@ -51,6 +51,22 @@
                     "on Ante {C:attention}#2#{} or higher"
                 ]
             },
+            "b_bdeck_water": {
+                "name": "Deck of The Water",
+                "text": [
+                    "Start with 0 discards",
+                    "Gain {C:mult}+#2#{} Mult",
+                    "after hand played if",
+                    "hand score is at least",
+                    "1/(Hands Remaining)",
+                    "of remaining blind score",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
+                ],
+                "unlock": [
+                    "Defeat {C:attention}#1#",
+                    "on Ante {C:attention}#2#{} or higher"
+                ]
+            },
             "b_bdeck_window": {
                 "name": "Deck of The Window",
                 "text": [

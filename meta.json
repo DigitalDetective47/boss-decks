@@ -11,6 +11,7 @@
     "badge_text_colour": "5D2414",
     "version": "1.0.0~1a07b",
     "dependencies": [
-        "Steamodded (>=1.0.0~BETA-0814a)"
+        "Steamodded (>=1.0.0~BETA-0814a)",
+        "StrangeLib (>=4.1)"
     ]
 }

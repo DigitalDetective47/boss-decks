@@ -72,6 +72,54 @@ SMODS.Back {
 }
 
 SMODS.Back {
+    key = "water",
+    atlas = "decks",
+    pos = { x = 0, y = 2 },
+    unlocked = false,
+    config = { extra = 1 },
+    loc_vars = function(self, info_queue)
+        return { vars = { G.GAME.b_bdeck_water or 0, self.config.extra } }
+    end,
+    locked_loc_vars = locked_loc_vars,
+    check_for_unlock = check_for_unlock,
+    apply = function(self, back)
+        apply(self, back)
+        G.E_MANAGER:add_event(Event { func = function()
+            G.GAME.round_resets.discards = 0
+            G.GAME.current_round.discards_left = 0
+            G.GAME.b_bdeck_water = 0
+            return true
+        end })
+    end,
+    calculate = function(self, back, context)
+        if context.final_scoring_step then
+            return { mult = G.GAME.b_bdeck_water }
+        elseif context.hand_total and math.floor(context.hand_total) >= math.floor((G.GAME.blind.chips - G.GAME.chips) / (G.GAME.current_round.hands_left + 1)) then
+            SMODS.scale_card(G.deck.cards[1],
+                { ref_table = G.GAME, ref_value = self.key, scalar_table = self.config, scalar_value = "extra" })
+        end
+    end
+}
+local ease_discards_ref = ease_discard
+function ease_discard(...)
+    if G.GAME.selected_back.name ~= "b_bdeck_water" then
+        return ease_discards_ref(...)
+    end
+    G.GAME.round_resets.discards = 0
+    G.GAME.current_round.discards_left = 0
+    attention_text {
+        text = localize("k_nope_ex"),
+        scale = 1,
+        hold = 0.7,
+        cover = G.HUD:get_UIE_by_ID("discard_UI_count").parent,
+        cover_colour = G.C.GREY,
+        align = "cm",
+    }
+    play_sound("timpani", 0.8)
+    play_sound("generic1")
+end
+
+SMODS.Back {
     key = "window",
     atlas = "decks",
     pos = { x = 4, y = 0 },
