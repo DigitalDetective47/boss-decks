@@ -54,7 +54,7 @@ SMODS.Back {
     check_for_unlock = check_for_unlock,
     apply = apply,
     calculate = function(self, back, context)
-        if context.before and G.GAME.hands[context.scoring_name].level > 1 then
+        if context.before and StrangeLib.safe_compare(G.GAME.hands[context.scoring_name].level, ">", 1) then
             SMODS.upgrade_poker_hands { hands = context.scoring_name, level_up = -1 }
             ---@type PokerHands
             local hand = G.handlist[1]
@@ -94,7 +94,7 @@ SMODS.Back {
     calculate = function(self, back, context)
         if context.final_scoring_step then
             return { mult = G.GAME.b_bdeck_water }
-        elseif context.hand_total and math.floor(context.hand_total) >= math.floor((G.GAME.blind.chips - G.GAME.chips) / (G.GAME.current_round.hands_left + 1)) then
+        elseif context.hand_total and StrangeLib.safe_compare(context.hand_total, ">=", math.floor((G.GAME.blind.chips - G.GAME.chips) / (G.GAME.current_round.hands_left + 1))) then
             SMODS.scale_card(G.deck.cards[1],
                 { ref_table = G.GAME, ref_value = self.key, scalar_table = self.config, scalar_value = "extra" })
         end
